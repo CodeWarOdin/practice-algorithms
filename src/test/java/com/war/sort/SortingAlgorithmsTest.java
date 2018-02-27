@@ -8,7 +8,6 @@ import org.reflections.scanners.ResourcesScanner;
 import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +24,7 @@ public class SortingAlgorithmsTest {
 
     @Test
     public void sortTest(){
-        List<TestInput> testInputs = null;
+        List<TestInput> testInputs = new ArrayList<>();
         try {
             testInputs = loadTestInput(new FileInputStream(new File("E:\\SynDev\\algorithms\\src\\main\\resources\\com\\war\\sort\\sortingInput.data")));
         } catch (FileNotFoundException e) {
@@ -35,7 +34,7 @@ public class SortingAlgorithmsTest {
         for(Sort sort : sortList){
             System.out.println("SORT START " + sort.getClass());
             for(TestInput testInput : testInputs){
-                System.out.println("INPUT START " + testInput.input);
+                System.out.println("INPUT START ");
                 sort.sort(testInput.input);
                 System.out.println("INPUT END ");
                 Assert.assertTrue(Arrays.equals(testInput.input, testInput.output));
@@ -76,11 +75,7 @@ public class SortingAlgorithmsTest {
                     try {
                         Sort sort = (Sort) sortConstructor.newInstance();
                         sortList.add(sort);
-                    } catch (InstantiationException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
+                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }
                 }
@@ -92,12 +87,10 @@ public class SortingAlgorithmsTest {
     private static class TestInput{
         private long[] input;
         private long[] output;
-        private int size;
 
         private TestInput(int size) {
             input = new long[size];
             output = new long[size];
-            this.size = size;
         }
     }
 }
