@@ -21,6 +21,7 @@ public class InsertionRecursiveSort implements Sort {
         int pos = length - 2;
         while(pos >=0 && objects[pos] > value){
             objects[pos + 1] = objects[pos];
+            pos--;
         }
         objects[pos + 1] = value;
     }
