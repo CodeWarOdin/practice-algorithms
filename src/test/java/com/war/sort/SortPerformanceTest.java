@@ -22,7 +22,7 @@ public class SortPerformanceTest {
     public void sortTest(){
         long[] testInputs = new long[20000];
         try {
-            testInputs = loadTestInput(new FileInputStream(new File("E:\\SynDev\\algorithms\\src\\main\\resources\\com\\war\\sort\\reverse20K.data")));
+            testInputs = loadTestInput(new FileInputStream(new File("com/war/sort/reverse20K.data")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

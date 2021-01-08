@@ -24,7 +24,7 @@ public class SortingAlgorithmsTest {
     public void sortTest(){
         List<TestInput> testInputs = new ArrayList<>();
         try {
-            testInputs = loadTestInput(new FileInputStream(new File("E:\\SynDev\\algorithms\\src\\main\\resources\\com\\war\\sort\\sortingInput.data")));
+            testInputs = loadTestInput(new FileInputStream(new File("com/war/sort/sortingInput.data")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class SortingAlgorithmsTest {
                 System.out.println("INPUT START ");
                 sort.sort(testInput.input);
                 System.out.println("INPUT END ");
-                Assert.assertTrue(Arrays.equals(testInput.input, testInput.output));
+                Assert.assertArrayEquals(testInput.input, testInput.output);
             }
             System.out.println("SORT END " + sort.getClass());
         }
